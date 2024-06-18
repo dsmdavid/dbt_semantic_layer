@@ -139,6 +139,34 @@ metrics:
     type_params:
       measure: order_cost
 
+  - name: cum_revenue_l2w
+    label: Cumulative Order total (L2W)   
+    description: Trailing 1-week cumulative order amount
+    type: cumulative
+    type_params:
+      measure: 
+        name: order_total
+        fill_nulls_with: 0
+      window: 2 week
+  - name: cum_revenue_l1w
+    label: Cumulative Order total (L1W)   
+    description: Trailing 1-week cumulative order amount
+    type: cumulative
+    type_params:
+      measure: 
+        name: order_total
+        fill_nulls_with: 0
+      window: 1 week
+  - name: revenue_lw
+    label: revenue_lw
+    type: derived
+    type_params:
+      expr: cum_revenue_l1w - cum_revenue_l2w
+      metrics:
+        - name: cum_revenue_l1w
+        - name: cum_revenue_l2w
+
+        
 #Ratio type metric
   - name: "food_order_pct"
     description: "The food cost as the % of the total order"
