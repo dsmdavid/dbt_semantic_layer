@@ -174,6 +174,18 @@ metrics:
         - name: order_total
           alias: revenue_last_week
           offset_window: 1 week
+  - name: revenue_wow_growth
+    label: revenue_wow_growth
+    type: derived
+    type_params:
+      expr: (revenue_this_week - revenue_last_week)*100 / revenue_last_week
+      metrics: 
+        - name: order_total
+          alias: revenue_last_week
+          offset_window: 1 week
+        - name: order_total
+          alias: revenue_this_week                
+
 #Ratio type metric
   - name: "food_order_pct"
     description: "The food cost as the % of the total order"
