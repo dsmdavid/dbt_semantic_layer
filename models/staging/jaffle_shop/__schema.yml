@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: jaffle_shop
-    database: raw
-    schema: jaffle_shop
+    database: test_db
+    schema: dvd_semantic_raw
     tables:
       - name: customers
       - name: orders
